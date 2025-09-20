@@ -102,7 +102,7 @@ def validate_kitti(model, iters=32, mixed_prec=False):
     """ Peform validation using the KITTI-2015 (train) split """
     model.eval()
     aug_params = {}
-    val_dataset = datasets.KITTI_2012(aug_params, image_set='training')
+    val_dataset = datasets.KITTI_2015(aug_params, image_set='training')
     torch.backends.cudnn.benchmark = True
 
     out_list, epe_list, elapsed_list = [], [], []
@@ -119,7 +119,7 @@ def validate_kitti(model, iters=32, mixed_prec=False):
             with autocast(enabled=mixed_prec):
                 torch.cuda.synchronize()
                 start = time.time()
-                flow_pr = model(image1, image2)
+                flow_pr = model(image1, image2, iters=iters, test_mode=True)
                 torch.cuda.synchronize()
                 end = time.time()
 

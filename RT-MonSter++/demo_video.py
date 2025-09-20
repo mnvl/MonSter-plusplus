@@ -135,7 +135,7 @@ def demo(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--restore_ckpt', help="restore checkpoint", default="/data2/cjd/mono_fusion/checkpoints/mix_all.pth")
+    parser.add_argument('--restore_ckpt', help="restore checkpoint", default="./checkpoints/mix_all.pth")
 
     parser.add_argument('--save_numpy', action='store_true', help='save output as numpy arrays')
 
@@ -144,15 +144,14 @@ if __name__ == '__main__':
 
     parser.add_argument('--output_directory', help="directory to save output", default="kitti")
     parser.add_argument('--mixed_precision', action='store_true', help='use mixed precision')
-    parser.add_argument('--valid_iters', type=int, default=16, help='number of flow-field updates during forward pass')
-    parser.add_argument('--encoder', type=str, default='vitl', choices=['vits', 'vitb', 'vitl', 'vitg'])
+    parser.add_argument('--valid_iters', type=int, default=4, help='number of flow-field updates during forward pass')
+    parser.add_argument('--encoder', type=str, default='vits', choices=['vits', 'vitb', 'vitl', 'vitg'])
 
     # Architecture choices
-    parser.add_argument('--hidden_dims', nargs='+', type=int, default=[128]*3, help="hidden state and context dimensions")
+    parser.add_argument('--hidden_dims', nargs='+', type=int, default=[32, 64, 96], help="hidden state and context dimensions")
     parser.add_argument('--corr_implementation', choices=["reg", "alt", "reg_cuda", "alt_cuda"], default="reg", help="correlation volume implementation")
     parser.add_argument('--shared_backbone', action='store_true', help="use a single backbone for the context and feature encoders")
-    parser.add_argument('--corr_levels', type=int, default=2, help="number of levels in the correlation pyramid")
-    parser.add_argument('--corr_radius', type=int, default=4, help="width of the correlation pyramid")
+    parser.add_argument('--corr_radius', type=int, default=[2, 2, 4], help="width of the correlation pyramid")
     parser.add_argument('--n_downsample', type=int, default=2, help="resolution of the disparity field (1/2^K)")
     parser.add_argument('--slow_fast_gru', action='store_true', help="iterate the low-res GRUs more frequently")
     parser.add_argument('--n_gru_layers', type=int, default=3, help="number of hidden GRU levels")
