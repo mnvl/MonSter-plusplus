@@ -1,7 +1,6 @@
 # MonSter++
 MonSter++: A Unified Geometric Foundation Model for Stereo and Multi-View Depth Estimation via the Unleashing of Monodepth Priors
 
-Code coming soon!
 ## News 
 - `[2025/9]` We have open-sourced our lightweight real-time model RT-MonSter++
 - `[2025/9]` Weights for RT-MonSter++ model released! ！
