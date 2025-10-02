@@ -49,6 +49,8 @@ We obtained the 1st place on the world-wide [KITTI 2012 leaderboard](https://www
 
 <img width="1205" height="709" alt="image" src="https://github.com/user-attachments/assets/161d5344-0a10-4e93-9aa4-ea99f9bfb349" />
 
+
+
  We obtained the 2nd place on the world-wide [ETH3D leaderboard](https://www.eth3d.net/low_res_two_view), while maintaining the lowest inference cost, particularly compared with the top-ranked method.
  <img width="2543" height="1363" alt="3e06f3c5a624ab19c78fb89c0f516ed2" src="https://github.com/user-attachments/assets/8168ee8c-6003-4ca8-8efe-b85030139017" />
 
