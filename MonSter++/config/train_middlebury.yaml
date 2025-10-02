@@ -1,0 +1,29 @@
+project_name: Monster-middlebury
+restore_ckpt: "./sceneflow.pth"
+logdir: './checkpoints/middlebury/'
+encoder: 'vitl'
+batch_size: 8
+train_datasets: ['middlebury_finetune']
+lr: 1e-4
+wdecay: 1e-5
+total_step: 150000
+save_frequency: 2000
+save_path: './checkpoints/middlebury/'
+val_frequency: 2000
+image_size: [416, 1216]
+train_iters: 20
+valid_iters: 32
+val_dataset: 'Middlebury'
+corr_implementation: "reg"
+corr_levels: 2
+corr_radius: 4
+n_downsample: 2
+n_gru_layers: 3
+hidden_dims: [128, 128, 128]
+max_disp: 768
+saturation_range: [0.0, 1.4]
+do_flip: False
+spatial_scale: [-0.2, 0.4]
+noyjitter: True
+num_gpu: 8
+seed: 666
