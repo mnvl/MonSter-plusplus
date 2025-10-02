@@ -42,16 +42,16 @@ pip install swanlab
 # Leaderboards 🏆
 We obtained the 1st place on the world-wide [KITTI 2012 leaderboard](https://www.cvlibs.net/datasets/kitti/eval_stereo_flow.php?benchmark=stereo) and [KITTI 2015 leaderboard](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo).
 
-[KITTI 2012 leaderboard](https://www.cvlibs.net/datasets/kitti/eval_stereo_flow.php?benchmark=stereo)
+1. [KITTI 2012 leaderboard](https://www.cvlibs.net/datasets/kitti/eval_stereo_flow.php?benchmark=stereo)
 <img width="1221" height="696" alt="image" src="https://github.com/user-attachments/assets/886445d2-c9c2-4148-9bd2-599e62802e96" />
 
-[KITTI 2015 leaderboard](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
+2. [KITTI 2015 leaderboard](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
 
 <img width="1205" height="709" alt="image" src="https://github.com/user-attachments/assets/161d5344-0a10-4e93-9aa4-ea99f9bfb349" />
 
-
-
  We obtained the 2nd place on the world-wide [ETH3D leaderboard](https://www.eth3d.net/low_res_two_view), while maintaining the lowest inference cost, particularly compared with the top-ranked method.
+
+ 3. [ETH3D leaderboard](https://www.eth3d.net/low_res_two_view)
  <img width="2543" height="1363" alt="3e06f3c5a624ab19c78fb89c0f516ed2" src="https://github.com/user-attachments/assets/8168ee8c-6003-4ca8-8efe-b85030139017" />
 
 
