@@ -50,4 +50,27 @@ We obtained the 1st place on the world-wide [KITTI 2012 leaderboard](https://www
 <img width="1205" height="709" alt="image" src="https://github.com/user-attachments/assets/161d5344-0a10-4e93-9aa4-ea99f9bfb349" />
  
 
+## ✈️ Citation
 
+If you find our works useful in your research, please consider citing our papers:
+
+```bibtex
+
+MonSter：
+@InProceedings{Cheng_2025_CVPR,
+    author    = {Cheng, Junda and Liu, Longliang and Xu, Gangwei and Wang, Xianqi and Zhang, Zhaoxing and Deng, Yong and Zang, Jinliang and Chen, Yurui and Cai, Zhipeng and Yang, Xin},
+    title     = {MonSter: Marry Monodepth to Stereo Unleashes Power},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2025},
+    pages     = {6273-6282}
+}
+
+MonSter++：
+@article{cheng2025monster,
+  title={MonSter: Marry Monodepth to Stereo Unleashes Power},
+  author={Cheng, Junda and Liu, Longliang and Xu, Gangwei and Wang, Xianqi and Zhang, Zhaoxing and Deng, Yong and Zang, Jinliang and Chen, Yurui and Cai, Zhipeng and Yang, Xin},
+  journal={arXiv preprint arXiv:2501.08643},
+  year={2025}
+}
+```
