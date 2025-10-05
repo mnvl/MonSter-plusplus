@@ -56,7 +56,7 @@ def validate_eth3d(model, iters=32, mixed_prec=False):
     aug_params = {}
     val_dataset = datasets.ETH3D(aug_params)
 
-    out_list, epe_list = [], []
+    out_list, epe_list, elapsed_list  = [], [], []
     for val_id in range(len(val_dataset)):
         (imageL_file, imageR_file, GT_file), image1, image2, flow_gt, valid_gt = val_dataset[val_id]
         image1 = image1[None].cuda()
@@ -66,7 +66,14 @@ def validate_eth3d(model, iters=32, mixed_prec=False):
         image1, image2 = padder.pad(image1, image2)
         with torch.no_grad():
             with autocast(enabled=mixed_prec):
+                torch.cuda.synchronize()
+                start = time.time()
                 flow_pr = model(image1, image2, iters=iters, test_mode=True)
+                torch.cuda.synchronize()
+                end = time.time()
+
+        if val_id > 5:
+            elapsed_list.append(end-start)
 
         flow_pr = padder.unpad(flow_pr.float()).cpu().squeeze(0)
         assert flow_pr.shape == flow_gt.shape, (flow_pr.shape, flow_gt.shape)
@@ -93,7 +100,9 @@ def validate_eth3d(model, iters=32, mixed_prec=False):
     epe = np.mean(epe_list)
     d1 = 100 * np.mean(out_list)
 
-    print("Validation ETH3D: EPE %f, D1 %f" % (epe, d1))
+    avg_runtime = np.mean(elapsed_list)
+
+    print("Validation ETH3D: EPE %f, D1 %f, %f-FPS (%f s)" % (epe, d1, 1/avg_runtime, avg_runtime))
     return {'eth3d-epe': epe, 'eth3d-d1': d1}
 
 
@@ -305,8 +314,10 @@ def validate_driving(model, iters=32, mixed_prec=False):
         image1, image2 = padder.pad(image1, image2)
 
         with torch.autocast(device_type='cuda', enabled=mixed_prec):
+            torch.cuda.synchronize()
             start = time.time()
             flow_pr = model(image1, image2, iters=iters, test_mode=True)
+            torch.cuda.synchronize()
             end = time.time()
 
         if val_id > 50:
