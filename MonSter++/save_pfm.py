@@ -32,7 +32,7 @@ def demo(args):
     for key in checkpoint:
         ckpt['module.' + key] = checkpoint[key]
 
-    model.load_state_dict(checkpoint, strict=True)
+    model.load_state_dict(ckpt, strict=True)
 
     model = model.module
     model.to(DEVICE)

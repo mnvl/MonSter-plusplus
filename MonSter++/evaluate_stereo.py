@@ -115,8 +115,10 @@ def validate_kitti(model, iters=32, mixed_prec=False):
 
         with torch.no_grad():
             with autocast(enabled=mixed_prec):
+                torch.cuda.synchronize()
                 start = time.time()
                 flow_pr = model(image1, image2, iters=iters, test_mode=True)
+                torch.cuda.synchronize()
                 end = time.time()
 
         if val_id > 50:
@@ -171,8 +173,10 @@ def validate_vkitti(model, iters=32, mixed_prec=False):
         image1, image2 = padder.pad(image1, image2)
 
         with autocast(enabled=mixed_prec):
+            torch.cuda.synchronize()
             start = time.time()
             flow_pr = model(image1, image2, iters=iters, test_mode=True)
+            torch.cuda.synchronize()
             end = time.time()
 
         if val_id > 50:
@@ -229,8 +233,10 @@ def validate_sceneflow(model, iters=32, mixed_prec=False):
         image1, image2 = padder.pad(image1, image2)
 
         with autocast(enabled=mixed_prec):
+            torch.cuda.synchronize()
             start = time.time()
             flow_pr = model(image1, image2, iters=iters, test_mode=True)
+            torch.cuda.synchronize()
             end = time.time()
         # print(torch.cuda.memory_summary(device=None, abbreviated=False))
         if val_id > 50:
@@ -293,8 +299,10 @@ def validate_driving(model, iters=32, mixed_prec=False):
         image1, image2 = padder.pad(image1, image2)
 
         with torch.autocast(device_type='cuda', enabled=mixed_prec):
+            torch.cuda.synchronize()
             start = time.time()
             flow_pr = model(image1, image2, iters=iters, test_mode=True)
+            torch.cuda.synchronize()
             end = time.time()
 
         if val_id > 50:

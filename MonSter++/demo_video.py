@@ -90,7 +90,7 @@ def demo(args):
     for key in checkpoint:
         ckpt['module.' + key] = checkpoint[key]
 
-    model.load_state_dict(checkpoint, strict=True)
+    model.load_state_dict(ckpt, strict=True)
 
     model = model.module
     model.to(DEVICE)
@@ -114,9 +114,12 @@ def demo(args):
             image2 = load_image(imfile2)
             padder = InputPadder(image1.shape, divis_by=32)
             image1, image2 = padder.pad(image1, image2)
+
+            torch.cuda.synchronize()
             start_time = time.time()
             disp = model(image1, image2, iters=args.valid_iters, test_mode=True)
 
+            torch.cuda.synchronize()
             end_time = time.time()
             inference_time = end_time - start_time
             print(f"Inference time: {inference_time:.4f} seconds")
