@@ -1,5 +1,5 @@
 # 🚀 MonSter++ 🚀 
-MonSter++: Unified Stereo Matching, Multi-view Stereo, and Real-time Stereo with Monodepth Priors
+MonSter++: Unified Stereo Matching, Multi-view Stereo, and Real-time Stereo with Monodepth Priors  <a href="https://arxiv.org/abs/2501.08643"><img src="https://img.shields.io/badge/arXiv-2402.11095-b31b1b?logo=arxiv" alt='arxiv'></a>
 
 ## News 
 - `[2025/9]` We have open-sourced our lightweight real-time model RT-MonSter++
