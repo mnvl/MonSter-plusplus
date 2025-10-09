@@ -6,7 +6,7 @@ MonSter++: Unified Stereo Matching, Multi-view Stereo, and Real-time Stereo with
 <h2>🤗 Demo Video：</h2>
 <div align="center">
 	<a href="https://www.youtube.com/watch?v=YIhQCuQAKrU">
-		<img src="media/video.png" width="50%" alt="Overview Video">
+		<img src="Media/demo.png" width="50%" alt="Overview Video">
 	</a>
 </div>
 <p></p>
