@@ -133,10 +133,15 @@ def annotate(args):
             file_stem = os.path.join(output_directory, f"{frame_name}.png")
             disp = disp.cpu().numpy().squeeze()
 
-            assert disp.max() < 256
-            assert disp.min() >= 0
+            factor = 100
+            disp_np = disp * factor
+          
+            disp_np.max() > np.iinfo(np.uint16).max and print(f"{frame_name} has large disparities (disp.max())")
+            disp_np.min() < 0 and print(f"{frame_name} has negative disparities (disp.min())")
+            
+            disp_np = np.clip(disp_np, 0, np.iinfo(np.uint16).max)
 
-            disp_np = disp.astype(np.uint8)
+            disp_np = disp_np.astype(np.uint16)
             skimage.io.imsave(file_stem, disp_np)
 
 
